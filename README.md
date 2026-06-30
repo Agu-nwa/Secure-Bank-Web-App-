@@ -122,3 +122,30 @@ Failed to enable unit: Access denied
 [ec2-user@ip-10-0-1-112 ~]$ sudo systemctl enable httpd
 [ec2-user@ip-10-0-1-112 ~]$ sudo systemctl start httpd
 [ec2-user@ip-10-0-1-112 ~]$ 
+
+## ⚙️: Verify
+
+###: Command
+```bash
+[ec2-user@ip-10-0-1-112 ~]$ sudo systemctl status httpd
+● httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
+     Active: active (running) since Tue 2026-06-30 00:18:05 UTC; 43min ago
+       Docs: man:httpd.service(8)
+   Main PID: 3786 (httpd)
+     Status: "Total requests: 2; Idle/Busy workers 100/0;Requests/sec: 0.000772; Bytes served/sec:   0 B/sec"
+      Tasks: 230 (limit: 1059)
+     Memory: 17.1M
+        CPU: 2.873s
+     CGroup: /system.slice/httpd.service
+             ├─ 3786 /usr/sbin/httpd -DFOREGROUND
+             ├─ 3859 /usr/sbin/httpd -DFOREGROUND
+             ├─ 3863 /usr/sbin/httpd -DFOREGROUND
+             ├─ 3864 /usr/sbin/httpd -DFOREGROUND
+             ├─ 3866 /usr/sbin/httpd -DFOREGROUND
+             └─26038 /usr/sbin/httpd -DFOREGROUND
+
+Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal systemd[1]: Starting httpd.service - The Apache HTTP Server...
+Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal systemd[1]: Started httpd.service - The Apache HTTP Server.
+Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal httpd[3786]: Server configured, listening on: port 80
+[ec2-user@ip-10-0-1-112 ~]$
