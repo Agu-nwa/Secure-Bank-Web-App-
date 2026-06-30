@@ -154,7 +154,29 @@ Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal httpd[3786]: Server co
 
 ### Command:
 ```bash
-scp -i ~/Downloads/port.pem ~/.ssh/bank.pem ec2-user@51.20.127.173:/home/ec2-user/bank.pem
+scp -i ~/Downloads/pro.pem ~/.ssh/bank.pem ec2-user@51.20.127.173:/home/ec2-user/bank.pem
 bank.pem                                                                                                                                                                  100% 1678    11.3KB/s   00:00    
 charles@Dev ~ % 
 
+
+## ⚙️: SSH From Public EC2 to Private EC2
+
+###: Command
+```bash
+[ec2-user@ip-10-0-1-112 ~]$ ssh -i pro.pem ec2-user@10.0.137.215
+The authenticity of host '10.0.137.215 (10.0.137.215)' can't be established.
+ED25519 key fingerprint is SHA256:curxrrrxiCw+aRVpgLc8mkxCvzvnLO+aCH+13QqkS+s.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.0.137.215' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-10-0-137-215 ~]$  
