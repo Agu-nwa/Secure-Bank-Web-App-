@@ -149,3 +149,12 @@ Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal systemd[1]: Starting h
 Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal systemd[1]: Started httpd.service - The Apache HTTP Server.
 Jun 30 00:18:05 ip-10-0-1-112.eu-north-1.compute.internal httpd[3786]: Server configured, listening on: port 80
 [ec2-user@ip-10-0-1-112 ~]$
+
+## ⚙️: Copy the Private Key to the Public EC2 Instance
+
+### Command:
+```bash
+scp -i ~/Downloads/port.pem ~/.ssh/bank.pem ec2-user@51.20.127.173:/home/ec2-user/bank.pem
+bank.pem                                                                                                                                                                  100% 1678    11.3KB/s   00:00    
+charles@Dev ~ % 
+
