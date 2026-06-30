@@ -180,3 +180,36 @@ Warning: Permanently added '10.0.137.215' (ED25519) to the list of known hosts.
          _/ _/
        _/m/'
 [ec2-user@ip-10-0-137-215 ~]$  
+
+## ⚙️: Private EC2 Internet Access Test
+
+### Command
+```bash
+
+[ec2-user@ip-10-0-137-215 ~]$ sudo dnf install -y httpd
+Amazon Linux 2023 repository                                    [                                 ===                       ] ---  B/s |   0  B     --:-- ETA
+
+
+
+
+## 📂: Create NAT Gateway in Public Subnet
+
+### Command
+```tsx
+Create a NAT Gateway in the public subnet
+Allocate or attach an Elastic IP to the NAT Gateway
+Wait for the NAT Gateway status to become Available
+Navigate to the private route table
+Edit routes and add a new route
+Set destination to 0.0.0.0/0
+Set target to the NAT Gateway
+
+and update the private route table like this:
+
+Private Route Table
+
+10.0.0.0/16 → local
+0.0.0.0/0   → NAT Gateway
+
+This would allow the private EC2 instance to install packages and access external services while still remaining private.
+```
