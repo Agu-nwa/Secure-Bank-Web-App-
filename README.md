@@ -108,3 +108,17 @@ Installed:
 Complete!
 [ec2-user@ip-10-0-1-112 ~]$
 
+
+## ⚙️: Creates a simple homepage.
+
+### Command:
+```bash
+[ec2-user@ip-10-0-1-112 ~]$ sudo echo "<h1>Secure Bank Web App</h1><p>Public web server running inside Bank VPC.</p>" > /var/www/html/index.html
+-bash: /var/www/html/index.html: Permission denied
+[ec2-user@ip-10-0-1-112 ~]$ echo "<h1>Secure Bank Web App</h1><p>Public web server running inside Bank VPC.</p>" | sudo tee /var/www/html/index.html
+<h1>Secure Bank Web App</h1><p>Public web server running inside Bank VPC.</p>
+[ec2-user@ip-10-0-1-112 ~]$ systemctl enable httpd
+Failed to enable unit: Access denied
+[ec2-user@ip-10-0-1-112 ~]$ sudo systemctl enable httpd
+[ec2-user@ip-10-0-1-112 ~]$ sudo systemctl start httpd
+[ec2-user@ip-10-0-1-112 ~]$ 
