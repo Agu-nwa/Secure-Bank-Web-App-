@@ -213,3 +213,98 @@ Private Route Table
 
 This would allow the private EC2 instance to install packages and access external services while still remaining private.
 ```
+
+## ⚙️: Install Apache
+
+### Command:
+```bash
+sudo dnf install -y httpd
+Amazon Linux 2023 repository                                                                                                   69 MB/s |  69 MB     00:00    
+Amazon Linux 2023 Kernel Livepatch repository                                                                                 421 kB/s |  55 kB     00:00    
+Dependencies resolved.
+==============================================================================================================================================================
+ Package                                   Architecture                 Version                                       Repository                         Size
+==============================================================================================================================================================
+Installing:
+ httpd                                     x86_64                       2.4.68-1.amzn2023.0.1                         amazonlinux                        46 k
+Installing dependencies:
+ apr                                       x86_64                       1.7.5-1.amzn2023.0.4                          amazonlinux                       129 k
+ apr-util                                  x86_64                       1.6.3-1.amzn2023.0.2                          amazonlinux                        97 k
+ apr-util-lmdb                             x86_64                       1.6.3-1.amzn2023.0.2                          amazonlinux                        13 k
+ generic-logos-httpd                       noarch                       18.0.0-12.amzn2023.0.3                        amazonlinux                        19 k
+ httpd-core                                x86_64                       2.4.68-1.amzn2023.0.1                         amazonlinux                       1.4 M
+ httpd-filesystem                          noarch                       2.4.68-1.amzn2023.0.1                         amazonlinux                        12 k
+ httpd-tools                               x86_64                       2.4.68-1.amzn2023.0.1                         amazonlinux                        80 k
+ libbrotli                                 x86_64                       1.0.9-4.amzn2023.0.2                          amazonlinux                       315 k
+ mailcap                                   noarch                       2.1.49-3.amzn2023.0.3                         amazonlinux                        33 k
+Installing weak dependencies:
+ apr-util-openssl                          x86_64                       1.6.3-1.amzn2023.0.2                          amazonlinux                        15 k
+ mod_http2                                 x86_64                       2.0.42-1.amzn2023.0.1                         amazonlinux                       167 k
+ mod_lua                                   x86_64                       2.4.68-1.amzn2023.0.1                         amazonlinux                        59 k
+
+Transaction Summary
+==============================================================================================================================================================
+Install  13 Packages
+
+Total download size: 2.4 M
+Installed size: 7.0 M
+Downloading Packages:
+(1/13): apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64.rpm                                                                         302 kB/s |  13 kB     00:00    
+(2/13): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm                                                                                   2.4 MB/s | 129 kB     00:00    
+(3/13): apr-util-1.6.3-1.amzn2023.0.2.x86_64.rpm                                                                              1.7 MB/s |  97 kB     00:00    
+(4/13): apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64.rpm                                                                      611 kB/s |  15 kB     00:00    
+(5/13): generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch.rpm                                                                 673 kB/s |  19 kB     00:00    
+(6/13): httpd-2.4.68-1.amzn2023.0.1.x86_64.rpm                                                                                1.5 MB/s |  46 kB     00:00    
+(7/13): httpd-core-2.4.68-1.amzn2023.0.1.x86_64.rpm                                                                            34 MB/s | 1.4 MB     00:00    
+(8/13): httpd-filesystem-2.4.68-1.amzn2023.0.1.noarch.rpm                                                                     397 kB/s |  12 kB     00:00    
+(9/13): httpd-tools-2.4.68-1.amzn2023.0.1.x86_64.rpm                                                                          2.5 MB/s |  80 kB     00:00    
+(10/13): mailcap-2.1.49-3.amzn2023.0.3.noarch.rpm                                                                             1.1 MB/s |  33 kB     00:00    
+(11/13): libbrotli-1.0.9-4.amzn2023.0.2.x86_64.rpm                                                                            7.9 MB/s | 315 kB     00:00    
+(12/13): mod_http2-2.0.42-1.amzn2023.0.1.x86_64.rpm                                                                           4.5 MB/s | 167 kB     00:00    
+(13/13): mod_lua-2.4.68-1.amzn2023.0.1.x86_64.rpm                                                                             2.0 MB/s |  59 kB     00:00    
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                          11 MB/s | 2.4 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                      1/1 
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                                                                                                     1/13 
+  Installing       : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64                                                                                           2/13 
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64                                                                                        3/13 
+  Installing       : apr-util-1.6.3-1.amzn2023.0.2.x86_64                                                                                                4/13 
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                                                                                                5/13 
+  Installing       : httpd-tools-2.4.68-1.amzn2023.0.1.x86_64                                                                                            6/13 
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                                                               7/13 
+  Running scriptlet: httpd-filesystem-2.4.68-1.amzn2023.0.1.noarch                                                                                       8/13 
+  Installing       : httpd-filesystem-2.4.68-1.amzn2023.0.1.noarch                                                                                       8/13 
+  Installing       : httpd-core-2.4.68-1.amzn2023.0.1.x86_64                                                                                             9/13 
+  Installing       : mod_http2-2.0.42-1.amzn2023.0.1.x86_64                                                                                             10/13 
+  Installing       : mod_lua-2.4.68-1.amzn2023.0.1.x86_64                                                                                               11/13 
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                                                                                  12/13 
+  Installing       : httpd-2.4.68-1.amzn2023.0.1.x86_64                                                                                                 13/13 
+  Running scriptlet: httpd-2.4.68-1.amzn2023.0.1.x86_64                                                                                                 13/13 
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                                                                                                     1/13 
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.2.x86_64                                                                                                2/13 
+  Verifying        : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64                                                                                           3/13 
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64                                                                                        4/13 
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                                                                                   5/13 
+  Verifying        : httpd-2.4.68-1.amzn2023.0.1.x86_64                                                                                                  6/13 
+  Verifying        : httpd-core-2.4.68-1.amzn2023.0.1.x86_64                                                                                             7/13 
+  Verifying        : httpd-filesystem-2.4.68-1.amzn2023.0.1.noarch                                                                                       8/13 
+  Verifying        : httpd-tools-2.4.68-1.amzn2023.0.1.x86_64                                                                                            9/13 
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                                                              10/13 
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                                                                                               11/13 
+  Verifying        : mod_http2-2.0.42-1.amzn2023.0.1.x86_64                                                                                             12/13 
+  Verifying        : mod_lua-2.4.68-1.amzn2023.0.1.x86_64                                                                                               13/13 
+
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64                    apr-util-1.6.3-1.amzn2023.0.2.x86_64                    apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64      
+  apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64       generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch       httpd-2.4.68-1.amzn2023.0.1.x86_64             
+  httpd-core-2.4.68-1.amzn2023.0.1.x86_64            httpd-filesystem-2.4.68-1.amzn2023.0.1.noarch           httpd-tools-2.4.68-1.amzn2023.0.1.x86_64       
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64              mailcap-2.1.49-3.amzn2023.0.3.noarch                    mod_http2-2.0.42-1.amzn2023.0.1.x86_64         
+  mod_lua-2.4.68-1.amzn2023.0.1.x86_64              
+
+Complete!
+[ec2-user@ip-10-0-137-215 ~]$ 
