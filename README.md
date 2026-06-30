@@ -308,3 +308,27 @@ Installed:
 
 Complete!
 [ec2-user@ip-10-0-137-215 ~]$ 
+
+## 📂: Start, Exit Private EC2 and Test
+
+### Command:
+```bash
+sudo systemctl enable httpd
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+[ec2-user@ip-10-0-137-215 ~]$ sudo systemctl start httpd
+[ec2-user@ip-10-0-137-215 ~]$ ls
+backend-status.txt
+[ec2-user@ip-10-0-137-215 ~]$ exit
+logout
+Connection to 10.0.137.215 closed.
+[ec2-user@ip-10-0-1-112 ~]$ curl http://10.0.137.215
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>It works! Apache httpd</title>
+</head>
+<body>
+<p>It works!</p>
+</body>
+</html>
+[ec2-user@ip-10-0-1-112 ~]$ 
